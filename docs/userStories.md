@@ -27,7 +27,7 @@ As a Pokémon enthusiast, I want a Pokémon app that provides comprehensive feat
 - As a registered user, I want to be able to manage my collection, including adding, removing, and updating card details.
 
     #### Extra:
-    - As an user, I want the app to provide up-to-date market data and trends for trading cards, so that I can make informed decisions about buying and selling cards.
+    - As a user, I want the app to provide up-to-date market data and trends for trading cards, so that I can make informed decisions about buying and selling cards.
 ---
 
 ## User Journey
