@@ -1,24 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Card_Collection extends Model {}
+class Team_Roster extends Model {}
 
-Card_Collection.init(
+Team_Roster.init(
     {
-        cardID: {
+        rosterID: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'card',
-                key: 'cardID'
-            }
+            primaryKey: true,
+            autoIncrement: true
         },
-        collectionID: {
+        teamHash: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        pokeID: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'collection',
-                key: 'collectionID'
+                model: 'pokemon',
+                key: 'pokeID'
             }
         }
     },
@@ -26,8 +28,8 @@ Card_Collection.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'card_collection'
+        modelName: 'team_roster'
     }
 );
 
-module.exports = Card_Collection;
+module.exports = Team_Roster;

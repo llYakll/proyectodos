@@ -9,67 +9,29 @@ Team.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
+        },
+        teamName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        teamHash: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         userID: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'User',
-                key: 'userID',
-            },
-        },
-        teamName: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        pokemon1ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
-        pokemon2ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
-        pokemon3ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
-        pokemon4ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
-        pokemon5ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
-        pokemon6ID: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID',
-            },
-        },
+                model: 'user',
+                key: 'userID'
+            }
+        }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'team',
+        modelName: 'team'
     }
 );
 
