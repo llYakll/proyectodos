@@ -55,7 +55,7 @@ Card_Collection.hasMany(Card, {
     foreignKey: 'cardID'
 });
 
-Card.belongsTo(Pokemon, {
+Card.belongsTo(Card_Collection, {
     foreignKey: 'cardID'
 });
 
