@@ -1645,7 +1645,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1740,7 +1741,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1832,7 +1834,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -1981,7 +1984,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -2001,7 +2005,8 @@
 							},
 							"name": "avgPrice",
 							"type": "DECIMAL",
-							"length": "10, 2"
+							"length": "10, 2",
+							"nullable": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -2131,7 +2136,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
@@ -2366,7 +2372,8 @@
 							"documentation": "MAKE THIS AUTO INCREMENT",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true
+							"primaryKey": true,
+							"unique": true
 						},
 						{
 							"_type": "ERDColumn",
