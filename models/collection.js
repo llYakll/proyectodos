@@ -1,4 +1,4 @@
-const {Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Collection extends Model {}
@@ -9,37 +9,37 @@ Collection.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
-        userID: {
+        quantity: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'User',
-                key: 'userID',
-            },
+            allowNull: false
+        },
+        avgPrice: {
+            type: DataTypes.DECIMAL(10, 2)
         },
         cardID: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Card_Collection',
-                key: 'cardID',
-            },
+                model: 'card',
+                key: 'cardID'
+            }
         },
-        quantity: {
+        userID: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        avgPrice: {
-            type: DataTypes.DECIMAL(10, 2),
-        },
+            references: {
+                model: 'user',
+                key: 'userID'
+            }
+        }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'collection',
+        modelName: 'collection'
     }
 )
 
