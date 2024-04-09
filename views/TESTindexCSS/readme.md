@@ -27,5 +27,8 @@ TEAM BUILDER BUGS
     team builder checkbox populate team
     team builder weircd scroll bar under team
 
+LANDING PAGE BUG
+    need some form of text overlaying the images
+
 ---
 team buildder partial
