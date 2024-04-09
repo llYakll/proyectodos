@@ -29,10 +29,17 @@ Collection.init(
         },
         quantity: {
             type: DataTypes.INTEGER,
+            allowNull: false,
         },
         avgPrice: {
             type: DataTypes.DECIMAL(10, 2),
         },
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'collection',
     }
 )
 

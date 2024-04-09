@@ -21,10 +21,18 @@ Card.init(
         },
         cardType: {
             type: DataTypes.STRING,
+            // allowNull: false,
         },
         imgURL: {
             type: DataTypes.STRING,
+            // allowNull: false,
         },
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'card',
     }
 )
 

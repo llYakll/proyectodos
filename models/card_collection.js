@@ -22,6 +22,12 @@ Card_Collection.init(
                 key: 'collectionID',
             },
         },
+    },
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'card_collection',
     }
 )
 
