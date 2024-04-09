@@ -745,7 +745,7 @@
 									"top": 197,
 									"width": 224,
 									"height": 13,
-									"text": "CollectionManager"
+									"text": "Card_Collection"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -1890,7 +1890,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOoaTssobmGRc="
 					},
-					"name": "CollectionManager",
+					"name": "Card_Collection",
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
@@ -1971,7 +1971,6 @@
 							"name": "collectionID",
 							"type": "INTEGER",
 							"length": 0,
-							"primaryKey": true,
 							"foreignKey": true
 						}
 					]
