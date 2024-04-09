@@ -19,7 +19,8 @@
     "handlebars": "^4.7.6",
     "mysql2": "^2.2.5",
     "node": "^18.20.0",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "supertest": "^6.3.4"
   },
   "devDependencies": {
     "jest": "^29.7.0",
