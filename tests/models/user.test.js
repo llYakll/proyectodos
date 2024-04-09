@@ -1,33 +1,42 @@
-const { sequelize } = require('../index');
-const User = require('../user');
+const sequelize = require('../../config/connection');
+const User = require('../../models/user');
 
 describe('User model', () => {
+    // logging is for debugging
     beforeAll(async () => {
+        // console.log('Before all hook executed');
         await sequelize.sync({ force: true });
+        // console.log('Database synchronized');
     });
 
+    // Tests for a successful new user
     it('should create a new user', async () => {
         const userData = {
-            username: 'testuser',
-            password: 'password123',
+            username: 'test1user',
+            password: 'password1234',
             regDate: new Date(),
             lastLogin: new Date()
         };
         const user = await User.create(userData);
-        expect(user.username).toEqual('testuser');
+        expect(user.username).toEqual('test1user');
+
+        // Used for debugging
+        // debug('User created:', user);
     });
 
+    // Tests to see the new password was hashed
     it('should hash the password before saving', async () => {
         const userData = {
-            username: 'testuser2',
-            password: 'password123',
+            username: 'test2user',
+            password: 'password1234',
             regDate: new Date(),
             lastLogin: new Date()
         };
         const user = await User.create(userData);
-        expect(user.password).not.toEqual('password123');
+        expect(user.password).not.toEqual('password1234');
     });
 
+    // Tests so that username will not allow NULL
     it('should not create a user without a username', async () => {
         const userData = {
             password: 'password123',
@@ -44,6 +53,7 @@ describe('User model', () => {
         expect(error.message).toContain('notNull Violation');
     });
 
+    // Tests to fail for too short of a password
     it('should not create a user with a short password', async () => {
         const userData = {
             username: 'testuser3',
