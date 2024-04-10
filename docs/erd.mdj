@@ -1346,6 +1346,21 @@
 										},
 										{
 											"_type": "ERDColumnView",
+											"_id": "AAAAAAGOxVBjD2JrjAA=",
+											"_parent": {
+												"$ref": "AAAAAAGOwIzD7qlAK34="
+											},
+											"model": {
+												"$ref": "AAAAAAGOxVBjAmJoaCw="
+											},
+											"font": "Arial;13;0",
+											"left": 37,
+											"top": 250,
+											"width": 214,
+											"height": 13
+										},
+										{
+											"_type": "ERDColumnView",
 											"_id": "AAAAAAGOwJAhv6lu9ew=",
 											"_parent": {
 												"$ref": "AAAAAAGOwIzD7qlAK34="
@@ -1355,7 +1370,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 37,
-											"top": 250,
+											"top": 265,
 											"width": 214,
 											"height": 13
 										}
@@ -1364,7 +1379,7 @@
 									"left": 32,
 									"top": 215,
 									"width": 224,
-									"height": 53
+									"height": 68
 								}
 							],
 							"font": "Arial;13;0",
@@ -2303,6 +2318,16 @@
 							"name": "teamHash",
 							"type": "VARCHAR",
 							"length": "30"
+						},
+						{
+							"_type": "ERDColumn",
+							"_id": "AAAAAAGOxVBjAmJoaCw=",
+							"_parent": {
+								"$ref": "AAAAAAGOwIzD7qk8ocY="
+							},
+							"name": "teamOrder",
+							"type": "INTEGER",
+							"length": 0
 						},
 						{
 							"_type": "ERDColumn",
