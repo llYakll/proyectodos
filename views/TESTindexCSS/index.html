@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- GStatic CDN -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <!-- Bulma CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Bulma Node_Modules -->
+    <!-- <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css"> -->
+    <!-- CSS link -->
+    <link rel="stylesheet" href="./styles.css">
+    <title>MyPokeDB</title>
+</head>
+<body>
+    <header class="hero has-background-black">
+        <div class="hero-body">
+            <nav class="container columns level">
+                <!-- Add to Collections and Clear History button -->
+                <div class="navbar-item is-active column is-flex is-justify-content-center">
+                    <div class="field has-addons is-marginless is-hidden-mobile">
+                        <a class="control" role="navigation"  href="login.html">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Login</span></button>        
+                        </a>
+                        <p class="control">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Clear History</span></button>        
+                        </p>
+                        <p class="control">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Add to My Collection</button>
+                        </p>
+                    </div>
+                </div>
+                <!-- Header/Title -->
+                <div class="column is-4 center">
+                    <h1 class="title is-size-1 has-text-light has-text-weight-bold"><span id="headerOne">My</span><span id="headerTwo">Poke</span><span id="headerOne">DB</span></h1>
+                </div>
+                <!-- Search Bar -->
+                <div class="column is-full-mobile">
+                    <form id="searchForm" class="field is-10 has-addons">
+                        <p class="control is-expanded">
+                            <input id="pokeInput" name="pokeInput" type="text" class="input is-rounded has-background-light has-text-dark center" placeholder="Pokémon's Name"/>
+                        </p>
+                        <p class="control">
+                            <button id="searchButton" type="submit" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
+                        </p>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="section is-flex is-fullheight">
+        <div class="level columns is-flex-grow-1">
+            <div class="column spacer level-item center is-1 is-full-mobile"></div>
+            <!-- Search History -->
+            <div id="historyButtons" class="column level-item center-column-top is-2 is-full-mobile">
+                <div id="historyOne" class="mt-1"></div>
+                <div id="historyTwo" class="mt-3"></div>
+                <div id="historyThree" class="mt-3"></div>
+                <div id="historyFour" class="mt-3"></div>
+                <div id="historyFive" class="mt-3"></div>
+                <div id="historySix" class="mt-3"></div>
+                <div id="historySeven" class="mt-3"></div>
+                <div id="historyEight" class="mt-3"></div>
+                <button id="clearPokeHistoryBtn2" class="button is-rounded has-text-danger has-text-weight-bold is-hidden-tablet is-fullwidth"><span>Clear History</span></button>
+            </div>
+            <!-- <div class="column spacer level-item center is-1 is-full-mobile"></div> -->
+            <!-- Main Pokémon Trading Card -->
+            <div class="column level-item figure-box center is-4 is-full-mobile">
+                <figure class="image is-128x128">
+                    <img src="./test-images/LgcjgEqtmuKN.jpg" />
+                    <p class="is-size-5 has-text-danger has-text-centered">sanic</p>
+                </figure>
+            </div>
+            <div class="column level-item center-column is-4 is-full-mobile">
+                <!-- Pokémon Stats Table -->
+                <table class="table is-fullwidth has-text-centered even-split">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="has-text-centered has-text-danger">National Dex Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" id="nationalDexNumber" class="has-text-centered has-text-light"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table is-fullwidth has-text-centered even-split">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="has-text-centered has-text-danger">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="typeOne"></td>
+                            <td id="typeTwo"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table is-fullwidth has-text-centered even-split">
+                    <thead>
+                        <tr>
+                            <th class="has-text-centered has-text-danger">Height</th>
+                            <th class="has-text-centered has-text-danger">Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="has-text-centered has-text-light"><span id="pokeHeight"></span> m</td>
+                            <td class="has-text-centered has-text-light"><span id="pokeWeight"></span> kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table is-fullwidth has-text-centered even-split">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="has-text-centered has-text-danger">Sprites</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img id="defaultFrontImg"></td>
+                            <td><img id="shinyFrontImg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table is-fullwidth has-text-centered even-split">
+                    <thead>
+                        <tr>
+                            <th class="has-text-centered has-text-danger">Abilities</th>
+                            <th class="has-text-centered has-text-danger">Hidden Ability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="abilityOne" class="has-text-centered has-text-light"></td>
+                            <td id="hiddenAbility" class="has-text-centered has-text-light"></td>
+                        </tr>
+                        <tr>
+                            <td id="abilityTwo" class="has-text-centered has-text-light"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="column spacer level-item center is-1 is-full-mobile"></div>
+        </div>
+    </section>
+    <footer class="hero has-background-black desktop-footer">
+        <div class="hero-body">    
+        </div>
+    </footer>
+<!-- <script src="./node_modules/jquery/dist/jquery.min.js"></script> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+<script type="module" src="./assets/js/script.js"></script>
+</body>
+</html>
