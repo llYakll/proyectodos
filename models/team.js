@@ -21,6 +21,7 @@ Team.init(
         },
         userID: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: 'user',
                 key: 'userID'
