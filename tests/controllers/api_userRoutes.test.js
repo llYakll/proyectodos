@@ -43,6 +43,26 @@ describe('User routes', () => {
       expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
     
+    it('should log out a user', async () => {
+        // Log in a user
+        const loginReq = await request(app)
+            .post('/api/users/login')
+            .send({
+                username: 'testuser',
+                password: 'password1234',
+            });
+        
+        // Extract the session cookie
+        const cookie = loginReq.headers['set-cookie'][0];
+        
+        // Log out the user using the session cookie
+        const logoutReq = await request(app)
+            .post('/api/users/logout')
+            .set('Cookie', cookie);
+        
+        // Assert that the response indicates successful logout
+        expect(logoutReq.statusCode).toEqual(204);
+    });
   });
 
 });
