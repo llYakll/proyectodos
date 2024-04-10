@@ -38,3 +38,6 @@ router.post('/save', async (req, res) => { //(path, callback)
 });
 
 module.exports = router;
+
+
+//implement logic that checks for pokename, if pokename doesnt exist insert pokemon and an identifier.

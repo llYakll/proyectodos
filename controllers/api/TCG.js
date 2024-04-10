@@ -31,3 +31,5 @@ router.use((err, req, res, next) => {
 });
 
 module.exports = router;
+
+//need query for subtypes of card
