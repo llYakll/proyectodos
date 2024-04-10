@@ -1,0 +1,64 @@
+
+To set up your HTML code using Handlebars.js, you would typically follow these steps:
+
+Create a Handlebars template.
+Compile the template.
+Render the compiled template with data.
+Below is how you can set up your HTML code with Handlebars.js:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>MyPokeDB</title>
+</head>
+<body>
+    <header class="hero has-background-black">
+        <div class="hero-body">
+            <nav class="container columns level">
+                <!-- Login Collections and Team builder button -->
+                <div class="navbar-item is-active column is-flex is-justify-content-center">
+                    <div class="field has-addons is-marginless is-hidden-mobile">
+                        <a class="control" role="navigation"  href="login.html">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Login</span></button>        
+                        </a>
+                        <a class="control" role="navigation"  href="collection.html">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Collection</span></button>        
+                        </a>
+                        <a class="control" role="navigation"  href="teambuilder.html">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Team Builder</button>
+                        </a>
+                    </div>
+                </div>
+                <!-- Header/Title -->
+                <div class="column is-4 center">
+                    <h1 class="title is-size-1 has-text-light has-text-weight-bold"><span id="headerOne">My</span><span id="headerTwo">Poke</span><span id="headerOne">DB</span></h1>
+                </div>
+                <!-- Search Bar -->
+                <div class="column is-full-mobile">
+                    <form id="searchForm" class="field is-10 has-addons">
+                        <p class="control is-expanded">
+                            <input id="pokeInput" name="pokeInput" type="text" class="input is-rounded has-background-light has-text-dark center" placeholder="Pokémon's Name"/>
+                        </p>
+                        <p class="control">
+                            <button id="searchButton" type="submit" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
+                        </p>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section is-flex is-fullheight">
+        <div class="column spacer level-item center is-1 is-full-mobile"></div>
+        </div>
+    </section>
+
+    <footer class="hero has-background-black desktop-footer">
+        <div class="hero-body">    
+        </div>
+    </footer>
