@@ -1,21 +1,23 @@
-const sequelize = require('../config/connection'); // Assuming this is the correct path to your Sequelize connection
-const Pokemon = require('../models/pokemon'); // Assuming this is the correct path to your Pokemon model
-const fetch = require('node-fetch'); // Import fetch for Node.js environment
+const sequelize = require('../config/connection');
+const Pokemon = require('../models/pokemon');
+const fetch = require('node-fetch');
 
 async function fetchPokemonData() {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=1025';
-  
+
     try {
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error('Failed to fetch Pokemon data');
-        };
-        return await response.json();
+        }
+        
+        const data = await response.json();
+        return data.results.map(pokemon => pokemon.name);
     } catch (error) {
         console.error('Error fetching data from PokeAPI:', error);
         return [];
-    };
+    }
 };
 
 async function seedPokemonTable() {
@@ -38,4 +40,4 @@ async function seedPokemonTable() {
     };
 };
 
-seedPokemonTable();
+module.exports = seedPokemonTable;
