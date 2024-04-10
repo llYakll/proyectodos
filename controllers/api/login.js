@@ -68,18 +68,19 @@ router.post('/login', async (req, res) => {
 //logout    
 router.post('/logout', (req, res) => {
     try {
-        // vheck if the user is logged in
+        // Check if the user is logged in
         if (req.session && req.session.userID) {
-            // log out
+            // Log out
             req.session.destroy(err => {
                 if (err) {
                     console.error('Error destroying session:', err);
                     return res.status(500).json({ error: 'Failed to logout' });
                 }
-                res.json({ message: 'Logout successful!' });
+                // Redirect to the home route after logout
+                res.redirect('/');
             });
         } else {
-            // is not logged in
+            // User is not logged in
             res.status(401).json({ error: 'User not authenticated' });
         }
     } catch (error) {
