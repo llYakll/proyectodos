@@ -42,6 +42,30 @@ describe('User routes', () => {
       expect(res.statusCode).toEqual(400);
       expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
+
+    it('should return an error if username or password is missing', async () => {
+        // Send a login request with missing username
+        let res = await request(app)
+          .post('/api/users/login')
+          .send({
+            password: 'password1234',
+          });
+      
+        // Assert that the response indicates missing username
+        expect(res.statusCode).toEqual(400);
+        expect(res.body.message).toEqual('Username and password are required.');
+      
+        // Send a login request with missing password
+        res = await request(app)
+          .post('/api/users/login')
+          .send({
+            username: 'testuser',
+          });
+      
+        // Assert that the response indicates missing password
+        expect(res.statusCode).toEqual(400);
+        expect(res.body.message).toEqual('Username and password are required.');
+      });
     
     it('should log out a user', async () => {
         // Log in a user
