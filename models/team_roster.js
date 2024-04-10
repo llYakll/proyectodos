@@ -15,6 +15,10 @@ Team_Roster.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        teamOrder: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         pokeID: {
             type: DataTypes.INTEGER,
             allowNull: false,
