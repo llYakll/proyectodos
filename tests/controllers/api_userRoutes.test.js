@@ -80,6 +80,20 @@ describe('User routes', () => {
         expect(res.statusCode).toEqual(400);
         expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
+
+    it('should return an error if password is incorrect', async () => {
+        // Send a login request with incorrect password
+        const res = await request(app)
+            .post('/api/users/login')
+            .send({
+                username: 'testuser',
+                password: 'incorrectpassword',
+        });
+    
+        // Assert that the response indicates incorrect password
+        expect(res.statusCode).toEqual(400);
+        expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
+    });
     
     it('should log out a user', async () => {
         // Log in a user
