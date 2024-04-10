@@ -1,5 +1,4 @@
 const express = require('express');  // import the Express framework
-const fetch = require('node-fetch'); // import the fetch library to make HTTP requests
 const router = express.Router();     // create a new Express router to define routes
 
 const getPokemon = async (req, res, next) => { // define an asynchronous function called getPokemon to handle the request
