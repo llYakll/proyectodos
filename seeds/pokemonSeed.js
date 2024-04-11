@@ -28,7 +28,7 @@ async function seedPokemonTable() {
         // Insert data into the Pokemon table
         await Pokemon.bulkCreate(monData.map((pokemon, index) => ({
             pokeID: index + 1,
-            name: pokemon.name
+            name: pokemon
         })));
 
         console.log('Pokemon table seeded successfully.');

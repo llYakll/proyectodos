@@ -30,6 +30,7 @@ Team_Roster.init(
     },
     {
         sequelize,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'team_roster'
