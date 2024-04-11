@@ -18,30 +18,25 @@
     <title>MyPokeDB</title>
 </head>
 <body>
-    
     <div class="level">
         <h1 class="is-size-1 is-uppercase level-left">Collection</h1>
     </div>
 
-    <div class="columns is-4">
-
-        <section class="is-size-7 has-text-danger has-text-centered">
-            <figure class="image is-128x128">
-                <img src="./test-images/LgcjgEqtmuKN.jpg" />
-                <div>Name: {{data.name}}</div>
-                <div>Price: {{data.tcgplayer.mid}}</div>
-            
-                {{#if (eq data.types.length > 1)}}
-                    <div>Type One: {{data.types.[0]}}</div>
-                    <div>Type Two: {{data.types.[1]}}</div>
-        
-                {{else}}
-                    <div>{{data.types.[0]}}</div>
-                {{/if}}
-        
-            </figure>
-        </section>
-
+    <div class="column is-full-mobile">
+        <form id="searchForm" class="field is-10 has-addons">
+            <p class="control is-expanded">
+                <input id="pokeInput" name="pokeInput" type="text" class="input is-rounded has-background-light has-text-dark center" placeholder="Pokémon's Name"/>
+            </p>
+            <p class="control">
+                <button id="searchButton" type="submit" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
+            </p>
+        </form>
     </div>
+
+    <div id="pokecard-container" class="columns is-multiline"></div>
+
+    <script src="script.js"></script>
 </body>
+
+
 </html>

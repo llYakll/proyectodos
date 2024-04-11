@@ -1,29 +1,53 @@
-// Get all checkboxes with class "rowCheckbox"
-const rowCheckboxes = document.querySelectorAll('.rowCheckbox');
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('searchForm');
+    const pokeInput = document.getElementById('pokeInput');
+    const pokecardContainer = document.getElementById('pokecard-container');
 
-// Add event listener to each checkbox
-rowCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        // Get the parent row of the checkbox
-        const parentRow = this.closest('tr');
+    searchForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
         
-        // Get the image route from the data attribute of the parent row
-        const imageRoute = parentRow.dataset.imageRoute;
+        const name = pokeInput.value.trim(); // Trim whitespace from input
 
-        // Check if the checkbox is checked
-        if (this.checked) {
-            // Create a new sprite element
-            const spriteElement = document.createElement('div');
-            spriteElement.innerHTML = `<section><figure><div class="image is-128x128"><img src="${imageRoute}" alt="pokemon sprite"/></div><p class="is-size-5 has-text-danger has-text-centered">${parentRow.querySelector('td:nth-child(2)').textContent}</p></figure></section>`;
+        if (name === '') {
+            alert('Please enter a Pokémon name');
+            return;
+        }
 
-            // Append the sprite element to the container
-            document.getElementById('pokemonSpritesContainer').appendChild(spriteElement);
-        } else {
-            // Remove the sprite element from the container if the checkbox is unchecked
-            const spriteElement = document.querySelector(`div[data-image-route="${imageRoute}"]`);
-            if (spriteElement) {
-                spriteElement.remove();
+        try {
+            const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${name}`);
+
+            if (!response.ok) {
+                throw new Error('Card not found');
             }
+
+            const { data } = await response.json();
+            // Call displayCard to append the fetched card to the container
+            displayCard(data[0]); // Assuming you want to display the first card from the response
+        } catch (error) {
+            console.error(error);
         }
     });
+
+    function displayCard(card) {
+        const cardElement = createCardElement(card);
+        pokecardContainer.appendChild(cardElement);
+    }
+
+    function createCardElement(card) {
+        const columnDiv = document.createElement('div');
+        columnDiv.classList.add('column', 'is-one-fifth');
+    
+        const img = document.createElement('img');
+        
+        // Check if the card object contains an images property with a small property
+        if (card.images && card.images.small) {
+            img.src = card.images.small;
+        } else {
+            console.error('Card data structure is not as expected:', card);
+        }
+    
+        columnDiv.appendChild(img);
+    
+        return columnDiv;
+    }
 });
