@@ -1,9 +1,10 @@
 <body>
-    
+    {{!-- Header --}}
     <div class="level">
         <h1 class="is-size-1 is-uppercase level-left">Collection</h1>
     </div>
 
+    {{!-- Search - can be a partial but unsure which is better --}}
     <div class="column is-full-mobile">
         <form id="searchForm" class="field is-10 has-addons">
             <p class="control is-expanded">
@@ -15,6 +16,7 @@
         </form>
     </div>
 
+    {{!-- Card container --}}
     <div id="pokecard-container" class="columns is-multiline">{{> pokecard}}</div>
     
 </body>
