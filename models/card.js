@@ -1,7 +1,31 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Collection = require('./collection');
+const Card_Collection = require('./card_collection');
 
-class Card extends Model {}
+class Card extends Model {
+    static async saveToCollection(cardData, userId) {
+        try {
+            const collection = await Collection.findOne({
+                where: { userId: userId },
+            });
+      
+            if (!collection) {
+                throw new Error('User collection not found');
+            }
+      
+            const cardCollection = await Card_Collection.create({
+                cardID: cardData.cardID,
+                collectionID: collection.collectionID,
+            });
+      
+            return cardCollection;
+        } catch (error) {
+            console.error('Error saving card to collection:', error);
+            throw error;
+        }
+    }
+}
 
 Card.init(
     {

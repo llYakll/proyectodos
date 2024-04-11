@@ -10,10 +10,8 @@ describe('User routes', () => {
       const currentDate = new Date();
       const hashedPassword = await bcrypt.hash('password1234', 10);
       const user = await User.create({
-        username: 'testuser',
-        password: hashedPassword,
-        regDate: currentDate,
-        lastLogin: currentDate,
+        username: 'test1user',
+        password: hashedPassword
       });
 
       // Send a login request with valid credentials
@@ -100,7 +98,7 @@ describe('User routes', () => {
         const loginReq = await request(app)
             .post('/api/users/login')
             .send({
-                username: 'testuser',
+                username: 'test1user',
                 password: 'password1234',
             });
         
@@ -116,5 +114,4 @@ describe('User routes', () => {
         expect(logoutReq.statusCode).toEqual(204);
     });
   });
-
 });

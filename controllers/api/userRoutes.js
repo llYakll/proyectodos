@@ -14,69 +14,69 @@ router.get('/', async (req, res) => {
 
 // Route for creating a new user
 router.post('/', async (req, res) => {
-    try {
-      const dbUserData = await User.create({
-        username: req.body.username,
-        password: req.body.password,
-      });
-  
-      req.session.save(() => {
-        req.session.loggedIn = true;
-        req.session.userId = dbUserData.userID;
-  
-        res.status(200).json(dbUserData);
-      });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-  });
+	try {
+		const dbUserData = await User.create({
+			username: req.body.username,
+			password: req.body.password,
+		});
+
+		req.session.save(() => {
+			req.session.loggedIn = true;
+			req.session.userId = dbUserData.userID;
+
+			res.status(200).json(dbUserData);
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 
 // Route for logging in
 router.post('/login', async (req, res) => {
-    try {
-        // Check if username and password are provided
-        if (!req.body.username || !req.body.password) {
-            return res.status(400).json({ message: 'Username and password are required.' });
-        }
-        
-        const dbUserData = await User.findOne({
-            where: {
-                username: req.body.username,
-            },
-        });
-    
-        if (!dbUserData) {
-            return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
-        }
-    
-        const validPassword = await bcrypt.compare(req.body.password, dbUserData.password);
-    
-        if (!validPassword) {
-            return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
-        }
-  
-        req.session.save(() => {
-            req.session.loggedIn = true;
-            req.session.userId = dbUserData.userID;
-    
-            res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
-        });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+	try {
+		// Check if username and password are provided
+		if (!req.body.username || !req.body.password) {
+			return res.status(400).json({ message: 'Username and password are required.' });
+		}
+		
+		const dbUserData = await User.findOne({
+			where: {
+				username: req.body.username,
+			},
+		});
+	
+		if (!dbUserData) {
+			return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
+		}
+	
+		const validPassword = await bcrypt.compare(req.body.password, dbUserData.password);
+	
+		if (!validPassword) {
+			return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
+		}
+
+		req.session.save(() => {
+			req.session.loggedIn = true;
+			req.session.userId = dbUserData.userID;
+	
+			res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+		});
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
 });
 
 // Route for logging out
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
+	if (req.session.loggedIn) {
+			req.session.destroy(() => {
+			res.status(204).end();
+		});
+	} else {
+		res.status(404).end();
+	}
+});
 
 module.exports = router;
