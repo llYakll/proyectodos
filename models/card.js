@@ -17,7 +17,7 @@ Card.init(
         },
         imgURL: {
             type: DataTypes.STRING,
-            // allowNull: false
+            allowNull: false
         },
         pokeID: {
             type: DataTypes.INTEGER,
