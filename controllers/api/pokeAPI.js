@@ -23,8 +23,8 @@ const getPokemon = async (req, res, next) => { // define an asynchronous functio
         const formattedTypes = types.map((type) => type.type.name);
 
         // get the URL of the official artwork sprite
-        const spriteUrl = sprites.other['official-artwork'].front_default;
-
+        const spriteUrl = sprites.other.official-artwork.front_default;
+                            
         // create a response object with the desired data
         const responseData = {
             name: pokemonData.name,
@@ -49,7 +49,7 @@ router.get('/pokemon/:name', getPokemon, (req, res) => {
     const { spriteUrl } = pokemonData; // extract the sprite URL from the Pokémon data
 
     // Redirect the client to the official artwork sprite URL
-    res.redirect(spriteUrl);
+    res.render (spriteUrl);
 });
 
 // error-handling middleware to catch and handle server errors
