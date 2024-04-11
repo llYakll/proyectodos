@@ -1,4 +1,4 @@
-<div class="columns is-multiline">
+{{!-- <div class="columns is-multiline">
     <div class="column is-one-fifth">
         <section class="is-size-7 has-text-danger has-text-centered">
             <figure class="image is-128x128">
@@ -16,4 +16,16 @@
             </figure>
         </section>
     </div>
-</div>
+</div> --}}
+
+
+<script id="card-template" type="text/x-handlebars-template">
+    <div class="column is-one-fifth">
+        <img src="{{image}}" alt="Card Image">
+        <div>Name: {{name}}</div>
+        <div>Rarity: {{rarity}}</div>
+        <div>Price: ${{price}} USD</div>
+        <div>Typing: {{type}}</div>
+        <div>{{weaknessValue}} weak to {{weaknessType}}</div>
+    </div>
+</script>
