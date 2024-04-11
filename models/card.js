@@ -35,21 +35,17 @@ Card.init(
             primaryKey: true,
             autoIncrement: true
         },
+        cardName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         cardType: {
             type: DataTypes.STRING,
-            // allowNull: false
+            allowNull: false
         },
         imgURL: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        pokeID: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'pokemon',
-                key: 'pokeID'
-            }
         }
     },
     {

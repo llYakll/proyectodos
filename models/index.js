@@ -3,6 +3,7 @@ const Card_Collection = require('./card_collection');
 const Collection = require('./collection');
 const User = require('./user');
 
+// one to one
 User.hasOne(Collection, {
     foreignKey: 'userID'
 });
@@ -11,19 +12,14 @@ Collection.belongsTo(User, {
     foreignKey: 'userID'
 });
 
-Card_Collection.hasMany(Card, {
+// many to many
+Card.belongsToMany(Collection, {
+    through: Card_Collection,
     foreignKey: 'cardID'
 });
 
-Card.belongsTo(Card_Collection, {
-    foreignKey: 'cardID'
-});
-
-Card_Collection.hasMany(Collection, {
-    foreignKey: 'collectionID'
-});
-
-Collection.belongsTo(Card_Collection, {
+Collection.belongsToMany(Card, {
+    through: Card_Collection,
     foreignKey: 'collectionID'
 });
 

@@ -1,19 +1,19 @@
 const { sequelize, DataTypes } = require('../../config/connection');
 const Collection = require('../../models/collection');
 
-// Mock Collection model methods for managing collections
+// Mock Collection Model methods for managing collections
 jest.mock('../../models/collection', () => ({
   findOne: jest.fn(),
   create: jest.fn(),
 }));
 
+// Test case for creating a Collection Model
 describe('Collection model', () => {
-  // Test case for creating a collection
   it('should create a collection with average sell price and total value', async () => {
-    // Mock collection data
+
     const collectionData = {
       quantity: 1,
-      avgPrice: 10.0, // Mocked average sell price
+      avgPrice: 10.0,
       cardID: 1,
       userID: 1,
     };
