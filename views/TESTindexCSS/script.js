@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchForm.addEventListener('submit', async function(event) {
         event.preventDefault();
         
-        const name = pokeInput.value.trim(); // Trim whitespace from input
-
+        const name = pokeInput.value.trim();
         if (name === '') {
             alert('Please enter a Pokémon name');
             return;
@@ -17,14 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch(`https://api.pokemontcg.io/v2/cards?q=name:${name}`);
 
             if (!response.ok) {
-                throw new Error('Card not found');
+                alert('Card not found');
+                return;
             }
 
             const { data } = await response.json();
             // Call displayCard to append the fetched card to the container
-            displayCard(data[0]); // Assuming you want to display the first card from the response
+            displayCard(data[0]);
         } catch (error) {
             console.error(error);
+            alert('Card not found');
+                return;
         }
     });
 
@@ -38,15 +40,33 @@ document.addEventListener('DOMContentLoaded', function() {
         columnDiv.classList.add('column', 'is-one-fifth');
     
         const img = document.createElement('img');
-        
-        // Check if the card object contains an images property with a small property
         if (card.images && card.images.small) {
             img.src = card.images.small;
         } else {
-            console.error('Card data structure is not as expected:', card);
+            // Set a placeholder image or display an error message
+            img.src = 'placeholder-image.jpg'; // Example placeholder image
         }
     
         columnDiv.appendChild(img);
+    
+        // Create additional elements for other information
+        const nameElement = document.createElement('div');
+        nameElement.textContent = `Name: ${card.name}`;
+    
+        const rarityElement = document.createElement('div');
+        rarityElement.textContent = `Price: $${card.cardmarket.prices.averageSellPrice} USD`;
+    
+        const typeElement = document.createElement('div');
+        typeElement.textContent = `Typing: ${card.types[0]}`;
+
+        const typeWeakness = document.createElement('div');
+        typeWeakness.textContent = `${card.weaknesses[0].value} weak to ${card.weaknesses[0].type}`;
+    
+        // Append additional information elements to the columnDiv
+        columnDiv.appendChild(nameElement);
+        columnDiv.appendChild(rarityElement);
+        columnDiv.appendChild(typeElement);
+        columnDiv.appendChild(typeWeakness);
     
         return columnDiv;
     }
