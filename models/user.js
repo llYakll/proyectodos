@@ -20,27 +20,12 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        // email: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     unique: true,
-        //     validate: {
-        //         isEmail: true
-        //     }
-        // },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [8]
             }
-        },
-        regDate: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        lastLogin: {
-            type: DataTypes.DATE
         }
     },
     {
