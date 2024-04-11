@@ -19,18 +19,18 @@ jest.mock('../../models/card_collection', () => ({
   create: jest.fn(),
 }));
 
+// Test case for saving a card to a collection
 describe('Card model', () => {
-  // Test case for saving a card to a collection
   it('should save a card to a user\'s collection', async () => {
-    // Mock user data
+    // Test user data
     const userData = { id: 1, username: 'testuser' };
 
-    // Mock card data
+    // Test card data
     const cardData = {
       cardID: 1,
+      cardName: 'Pikachu',
       cardType: 'Basic',
-      imgURL: 'https://example.com/pikachu.png',
-      pokeID: 25
+      imgURL: 'https://example.com/pikachu.png'
     };
 
     // Mock collection data
@@ -45,9 +45,15 @@ describe('Card model', () => {
     // Mock saving card to collection
     Card_Collection.create.mockResolvedValue({});
 
-    // Call the function to save the card to the user's collection
+    // Save the card to the user's collection
     const result = await Card.saveToCollection(cardData, userData.id);
 
     expect(result).toBeDefined();
+
+    // Verify that Card_Collection.create was called with the correct parameters
+    expect(Card_Collection.create).toHaveBeenCalledWith({
+      cardID: cardData.cardID,
+      collectionID: collectionData.collectionID,
+    });
   });
 });
