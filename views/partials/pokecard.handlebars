@@ -1,7 +1,16 @@
-<section>
+<section class="is-size-7 has-text-danger has-text-centered">
     <figure class="image is-128x128">
-        <img src="{{!-- need card --}}" />
-        <p class="is-size-5 has-text-danger has-text-centered">{{!--need name--}}</p>
-        <p class="is-size-5 has-text-danger has-text-centered">{{!--need price--}}</p>
+        <img src="{{data.images.small}}" />
+        <div>Name: {{data.name}}</div>
+        <div>Price: {{data.tcgplayer.mid}}</div>
+    
+        {{#if (eq data.types.length > 1)}}
+            <div>Type One: {{data.types.[0]}}</div>
+            <div>Type Two: {{data.types.[1]}}</div>
+
+        {{else}}
+            <div>{{data.types.[0]}}</div>
+        {{/if}}
+
     </figure>
 </section>
