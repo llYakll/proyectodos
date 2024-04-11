@@ -1,6 +1,5 @@
-// Import necessary modules and dependencies
-const { sequelize, DataTypes } = require('../../config/connection'); // Import sequelize instance and DataTypes
-const Collection = require('../../models/collection'); // Import the Collection model
+const { sequelize, DataTypes } = require('../../config/connection');
+const Collection = require('../../models/collection');
 
 // Mock Collection model methods for managing collections
 jest.mock('../../models/collection', () => ({
@@ -28,7 +27,6 @@ describe('Collection model', () => {
     // Call the function to create the collection
     const result = await Collection.create(collectionData);
 
-    // Assertions
     expect(result).toBeDefined();
     expect(result.quantity).toBe(collectionData.quantity);
     expect(result.avgPrice).toBe(collectionData.avgPrice);

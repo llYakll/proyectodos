@@ -2,13 +2,6 @@ const sequelize = require('../../config/connection');
 const User = require('../../models/user');
 
 describe('User model', () => {
-    // logging is for debugging
-    // beforeAll(async () => {
-    //     // console.log('Before all hook executed');
-    //     await sequelize.sync({ force: true });
-    //     // console.log('Database synchronized');
-    // });
-
     // Tests for a successful new user
     it('should create a new user', async () => {
         const userData = {
@@ -17,9 +10,6 @@ describe('User model', () => {
         };
         const user = await User.create(userData);
         expect(user.username).toEqual('test1user');
-
-        // Used for debugging
-        // debug('User created:', user);
     });
 
     // Tests to see the new password was hashed

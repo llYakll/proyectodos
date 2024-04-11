@@ -1,6 +1,5 @@
-// Import necessary modules and dependencies
-const { sequelize, DataTypes } = require('../../config/connection'); // Import sequelize instance and DataTypes
-const Card_Collection = require('../../models/card_collection'); // Import the Card_Collection model
+const { sequelize, DataTypes } = require('../../config/connection');
+const Card_Collection = require('../../models/card_collection');
 
 // Mock the create method of Card_Collection model
 jest.mock('../../models/card_collection', () => ({
@@ -22,7 +21,6 @@ describe('Card_Collection model', () => {
     // Call the function to create the card_collection entry
     const result = await Card_Collection.create(cardCollectionData);
 
-    // Assertions
     expect(result).toBeDefined();
     expect(result.cardID).toBe(cardCollectionData.cardID);
     expect(result.collectionID).toBe(cardCollectionData.collectionID);

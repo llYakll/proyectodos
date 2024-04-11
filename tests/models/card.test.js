@@ -1,8 +1,8 @@
-const { sequelize, DataTypes } = require('../../config/connection'); // Import sequelize instance and DataTypes
-const Card = require('../../models/card'); // Import the Card model
-const User = require('../../models/user'); // Import the User model
-const Collection = require('../../models/collection'); // Import the Collection model
-const Card_Collection = require('../../models/card_collection'); // Import the Card_Collection model
+const { sequelize, DataTypes } = require('../../config/connection');
+const Card = require('../../models/card');
+const User = require('../../models/user');
+const Collection = require('../../models/collection');
+const Card_Collection = require('../../models/card_collection');
 
 // Mock User model methods for authentication
 jest.mock('../../models/user', () => ({
