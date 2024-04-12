@@ -35,13 +35,22 @@ Card.init(
             primaryKey: true,
             autoIncrement: true
         },
+        setID: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         cardName: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        cardType: {
-            type: DataTypes.STRING,
+        cardSubtypes: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false
+        },
+        averageSellPrice: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+            defaultValue: 0
         },
         imgURL: {
             type: DataTypes.STRING,

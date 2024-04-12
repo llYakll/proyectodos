@@ -28,8 +28,9 @@ describe('Card model', () => {
     // Test card data
     const cardData = {
       cardID: 1,
-      cardName: 'Pikachu',
-      cardType: 'Basic',
+      setID: 'xy1-1',
+      cardName: 'Venusaur-EX',
+      cardType: ['Basic', 'EX'],
       imgURL: 'https://example.com/pikachu.png'
     };
 

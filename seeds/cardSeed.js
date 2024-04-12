@@ -2,40 +2,44 @@ const Card = require('../models/card');
 
 const cardData = [
   {
-    cardType: 'basic',
-    imgURL: 'url_here',
+    setID: 'bw5-3',
+    cardName: 'Venusaur',
+    cardSubTypes: [
+      'Stage 2'
+    ],
+    averageSellPrice: 12.56,
+    imgURL: 'https://images.pokemontcg.io/bw5/3_hires.png',
   },
   {
-    cardType: 'mega',
-    imgURL: 'url_here',
+    setID: 'xy2-12',
+    cardName: 'Charizard',
+    cardSubTypes: [
+      "Basic",
+      "EX"
+    ],
+    averageSellPrice: 19.3,
+    imgURL: 'https://images.pokemontcg.io/xy2/12_hires.png',
   },
   {
-    cardType: 'EX',
-    imgURL: 'url_here',
+    setID: 'sm12-38',
+    cardName: 'Blastoise & Piplup-GX',
+    cardSubTypes: [
+      "Basic",
+      "TAG TEAM",
+      "GX"
+    ],
+    averageSellPrice: 13.62,
+    imgURL: 'https://images.pokemontcg.io/sm12/38_hires.png',
   },
   {
-    cardType: 'basic',
-    imgURL: 'url_here',
-  },
-  {
-    cardType: 'mega',
-    imgURL: 'url_here',
-  },
-
-  // Potentially in need of another column here to contain some sort of identifying information for each specific card besides the auto iterating cardID.
-  // Before our big shift, this was being covered by pokeID
-
-  // I left one painting from the seed used in our exercises as an example for when I bring it up.
-
-  // {
-  //   title: 'Winter Home',
-  //   artist: 'Smit',
-  //   exhibition_date: 'January 20, 2018',
-  //   gallery_id: 4,
-  //   filename: '09-winter-home.jpg',
-  //   description:
-  //     'Log cabin blanketed in heavy white snow with tall snow covered pine trees in the background.',
-  // },
+    setID: 'swsh4-44',
+    cardName: 'Pikachu VMAX',
+    cardSubTypes: [
+      "VMAX"
+    ],
+    averageSellPrice: 4.15,
+    imgURL: 'https://images.pokemontcg.io/swsh4/44_hires.png',
+  }
 ];
 
 const seedCard = () => Card.bulkCreate(cardData);
