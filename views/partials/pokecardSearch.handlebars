@@ -1,13 +1,3 @@
-{{!-- 
-    labeled setID: (card set id in insomnia ex'bw5-3')
-    cardName: 'venusaur'
-    cardSubTypes: [
-        'Stage 2'
-    ]
-    averageSellPrice: 12.56
-    imgURL (ex .png)
- --}}
-
 <script id="card-template" type="text/x-handlebars-template">
     <div class="column is-one-quarter">
         <img src="{{image}}" alt="Card Image">
@@ -15,5 +5,7 @@
         <div>Name: {{name}}</div>
         <div>Sub Types: {{cardSubTypes}}</div>
         <div>Price: ${{price}} USD</div>
+        {{!-- need onclick function to transfer this div to my collection --}}
+        <button >Add to my Collection</button>
     </div>
 </script>

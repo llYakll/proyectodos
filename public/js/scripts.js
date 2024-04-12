@@ -41,13 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render template with data and insert into container
     function displayCard(card) {
         const cardData = {
-            image: card.images.small || 'placeholder-image.jpg',
+            setID: card.id,
+            image: card.images.small,
             name: card.name,
-            rarity: card.rarity,
-            price: card.cardmarket.prices.averageSellPrice || 'N/A',
-            type: card.types[0] || 'N/A',
-            weaknessValue: card.weaknesses[0].value || 'N/A',
-            weaknessType: card.weaknesses[0].type || 'N/A'
+            cardSubTypes: card.subtypes[0,1,2],
+            price: card.cardmarket.prices.averageSellPrice,
         };
 
         const html = template(cardData);

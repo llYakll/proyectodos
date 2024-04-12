@@ -4,17 +4,11 @@
         <h1 class="is-size-1 is-uppercase level-left">Collection</h1>
     </div>
 
-    {{!-- Search - can be a partial but unsure which is better --}}
-    <div class="column is-full-mobile">
-        <form id="searchForm" class="field is-10 has-addons">
-            <p class="control is-expanded">
-                <input id="pokeInput" name="pokeInput" type="text" class="input is-rounded has-background-light has-text-dark center" placeholder="Pokémon's Name"/>
-            </p>
-            <p class="control">
-                <button id="searchButton" type="submit" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
-            </p>
-        </form>
-    </div>
+    {{!-- Search - can be a partial but unsure which is better (searchfield.handlebars) --}}
+    {{!-- Search needs to search the collections database not the API --}}
+    <div>{{> searchfield}}</div>
+
+    <div>{{> spacer}}</div>
 
     {{!-- Card container --}}
     <div id="pokecard-container" class="columns is-multiline">{{> pokecard}}</div>
