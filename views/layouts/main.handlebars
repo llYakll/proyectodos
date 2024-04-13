@@ -7,48 +7,47 @@
     <title>MyPokeDB</title>
 </head>
 <body>
+    {{!-- header --}}
     <header class="hero has-background-black">
         <div class="hero-body">
             <nav class="container columns level">
-                <!-- Login Collections and Team builder button -->
+                <!-- Login and Collections button -->
+                {{!-- seacrch need to be added --}}
+                {{!-- needs routes --}}
                 <div class="navbar-item is-active column is-flex is-justify-content-center">
                     <div class="field has-addons is-marginless is-hidden-mobile">
-                        <a class="control" role="navigation"  href="login.html">
+                        {{!-- if logged in - log in else log out --}}
+                        {{#if loggedIn}}
+                        <a class="control" role="navigation"  href="/login">
                             <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Login</span></button>        
                         </a>
-                        <a class="control" role="navigation"  href="collection.html">
+                        <a class="control" role="navigation"  href="/collection">
                             <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Collection</span></button>        
                         </a>
-                        <a class="control" role="navigation"  href="teambuilder.html">
-                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Team Builder</button>
+                        <a class="control" role="navigation"  href="/search">
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Search</span></button>
                         </a>
                     </div>
                 </div>
-                <!-- Header/Title -->
+                
+                <!-- Title -->
                 <div class="column is-4 center">
-                    <h1 class="title is-size-1 has-text-light has-text-weight-bold"><span id="headerOne">My</span><span id="headerTwo">Poke</span><span id="headerOne">DB</span></h1>
-                </div>
-                <!-- Search Bar -->
-                <div class="column is-full-mobile">
-                    <form id="searchForm" class="field is-10 has-addons">
-                        <p class="control is-expanded">
-                            <input id="pokeInput" name="pokeInput" type="text" class="input is-rounded has-background-light has-text-dark center" placeholder="Pokémon's Name"/>
-                        </p>
-                        <p class="control">
-                            <button id="searchButton" type="submit" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
-                        </p>
-                    </form>
+                    <h1 class="title is-size-1 has-text-danger has-text-weight-bold">MyPokeDB</h1>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section class="section is-flex is-fullheight">
-        <div class="column spacer level-item center is-1 is-full-mobile"></div>
-        </div>
-    </section>
 
+    {{!-- footer --}}
     <footer class="hero has-background-black desktop-footer">
         <div class="hero-body">    
         </div>
     </footer>
+
+    {{!-- js link --}}
+    <script src="../../public/js/scripts.js"></script>
+</body>
+
+
+</html>

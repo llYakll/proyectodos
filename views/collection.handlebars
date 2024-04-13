@@ -1,9 +1,16 @@
 <body>
-    
+    {{!-- Header --}}
     <div class="level">
         <h1 class="is-size-1 is-uppercase level-left">Collection</h1>
     </div>
 
-    <div class="columns is-4"> {{> pokecard}} </div>
+    {{!-- Search - can be a partial but unsure which is better (searchfield.handlebars) --}}
+    {{!-- Search needs to search the collections database not the API --}}
+    <div>{{> searchfield}}</div>
+
+    <div>{{> spacer}}</div>
+
+    {{!-- Card container --}}
+    <div id="pokecard-container" class="columns is-multiline">{{> pokecard}}</div>
     
 </body>
