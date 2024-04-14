@@ -44,10 +44,6 @@ router.post('/', async (req, res) => {
         const { card_name, card_subtypes } = req.body;
         let apiUrl = `https://api.pokemontcg.io/v2/cards?q=`;
 
-        // console.log('this is the req:', req);
-        // console.log('this is the card_name:', card_name);
-        // console.log('this is the card_subtypes:', card_subtypes);
-
         if (card_name) {
             apiUrl += `name:${card_name}*&`;
         }
@@ -63,24 +59,19 @@ router.post('/', async (req, res) => {
 
         console.log('API URL:', apiUrl);
 
-        // Set a timeout of 10 seconds (10000 milliseconds)
+        // Set a timeout of 10 seconds (10000 milliseconds) because TCG API can take up to 10 seconds
         const config = {
-            timeout: 10000 // milliseconds
+            timeout: 10000
         };
 
-        // Make request to TCG API to search for cards
+        // Make request to TCG API using Axios
         const response = await axios.get(apiUrl, config);
-
-        // console.log('API response:', response.data);
         
         if (response.status !== 200) {
             throw new Error('Error searching for cards');
         }
 
-        // Extract card data from the API response
         const cards = response.data.data;
-
-        // console.log('Cards:', cards);
 
         // Render search results page with the retrieved card data and subtypes
         res.render('search', { cards: cards, subtypes: subtypes });
