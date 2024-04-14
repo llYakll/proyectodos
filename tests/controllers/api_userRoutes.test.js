@@ -7,19 +7,19 @@ describe('User routes', () => {
   describe('POST /api/users/login', () => {
     it('should log in a user with valid credentials', async () => {
       // Create a user in the database
-      const currentDate = new Date();
-      const hashedPassword = await bcrypt.hash('password1234', 10);
-      const user = await User.create({
-        username: 'test1user',
-        password: hashedPassword
-      });
+      const userData = {
+        username: 'testuser5',
+        password: 'password5',
+      };
+      const user = await User.create(userData);
 
       // Send a login request with valid credentials
       const res = await request(app)
         .post('/api/users/login')
+        // .send(userData);
         .send({
-          username: 'test1user',
-          password: 'password1234',
+          username: 'testuser5',
+          password: 'password5',
         });
 
       // Assert that the response indicates successful login
@@ -38,6 +38,7 @@ describe('User routes', () => {
 
       // Assert that the response indicates invalid credentials
       expect(res.statusCode).toEqual(400);
+      // expect(res.body.message).toEqual('User not found. Please check your username and try again.');
       expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
 
@@ -57,7 +58,7 @@ describe('User routes', () => {
         res = await request(app)
             .post('/api/users/login')
             .send({
-                username: 'testuser',
+                username: 'testuser5',
             });
       
         // Assert that the response indicates missing password
@@ -71,11 +72,12 @@ describe('User routes', () => {
             .post('/api/users/login')
             .send({
                 username: 'nonexistentuser',
-                password: 'password1234',
+                password: 'password5',
         });
     
         // Assert that the response indicates user not found
         expect(res.statusCode).toEqual(400);
+        // expect(res.body.message).toEqual('User not found. Please check your username and try again.');
         expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
 
@@ -84,12 +86,13 @@ describe('User routes', () => {
         const res = await request(app)
             .post('/api/users/login')
             .send({
-                username: 'testuser',
+                username: 'testuser5',
                 password: 'incorrectpassword',
         });
     
         // Assert that the response indicates incorrect password
         expect(res.statusCode).toEqual(400);
+        // expect(res.body.message).toEqual('Incorrect password. Please try again.');
         expect(res.body.message).toEqual('Incorrect username or password. Please try again!');
     });
     
@@ -98,8 +101,8 @@ describe('User routes', () => {
         const loginReq = await request(app)
             .post('/api/users/login')
             .send({
-                username: 'test1user',
-                password: 'password1234',
+                username: 'testuser5',
+                password: 'password5',
             });
         
         // Extract the session cookie

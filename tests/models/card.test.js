@@ -23,38 +23,39 @@ jest.mock('../../models/card_collection', () => ({
 describe('Card model', () => {
   it('should save a card to a user\'s collection', async () => {
     // Test user data
-    const userData = { id: 1, username: 'testuser' };
+    const user_data = { id: 1, username: 'testuser' };
 
     // Test card data
-    const cardData = {
-      cardID: 1,
-      setID: 'xy1-1',
-      cardName: 'Venusaur-EX',
-      cardType: ['Basic', 'EX'],
-      imgURL: 'https://example.com/pikachu.png'
+    const card_data = {
+      card_id: 1,
+      set_id: 'xy1-1',
+      card_name: 'Venusaur-EX',
+      card_subtypes: ['Basic', 'EX'],
+      average_sell_price: 6.3,
+      img_url: 'https://images.pokemontcg.io/xy1/1_hires.png'
     };
 
     // Mock collection data
-    const collectionData = { collectionID: 1, userId: userData.id };
+    const collection_data = { collection_id: 1, user_id: user_data.id };
 
     // Mock user authentication
-    User.findOne.mockResolvedValue(userData);
+    User.findOne.mockResolvedValue(user_data);
 
     // Mock finding user's collection
-    Collection.findOne.mockResolvedValue(collectionData);
+    Collection.findOne.mockResolvedValue(collection_data);
 
     // Mock saving card to collection
     Card_Collection.create.mockResolvedValue({});
 
     // Save the card to the user's collection
-    const result = await Card.saveToCollection(cardData, userData.id);
+    const result = await Card.saveToCollection(card_data, user_data.id);
 
     expect(result).toBeDefined();
 
     // Verify that Card_Collection.create was called with the correct parameters
     expect(Card_Collection.create).toHaveBeenCalledWith({
-      cardID: cardData.cardID,
-      collectionID: collectionData.collectionID,
+      card_id: card_data.card_id,
+      collection_id: collection_data.collection_id,
     });
   });
 });

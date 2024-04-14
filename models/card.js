@@ -4,10 +4,10 @@ const Collection = require('./collection');
 const Card_Collection = require('./card_collection');
 
 class Card extends Model {
-    static async saveToCollection(cardData, userId) {
+    static async saveToCollection(card_data, user_id) {
         try {
             const collection = await Collection.findOne({
-                where: { userId: userId },
+                where: { user_id: user_id },
             });
       
             if (!collection) {
@@ -15,8 +15,8 @@ class Card extends Model {
             }
       
             const cardCollection = await Card_Collection.create({
-                cardID: cardData.cardID,
-                collectionID: collection.collectionID,
+                card_id: card_data.card_id,
+                collection_id: collection.collection_id,
             });
       
             return cardCollection;
@@ -29,30 +29,37 @@ class Card extends Model {
 
 Card.init(
     {
-        cardID: {
+        card_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        setID: {
+        set_id: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        cardName: {
+        card_name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        cardSubtypes: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false
+        card_subtypes: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isArray(value) {
+                    if (!Array.isArray(value)) {
+                        throw new Error('card_subtypes must be an array');
+                    }
+                }
+            }
         },
-        averageSellPrice: {
+        average_sell_price: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
             defaultValue: 0
         },
-        imgURL: {
+        img_url: {
             type: DataTypes.STRING,
             allowNull: false
         }

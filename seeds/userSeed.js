@@ -1,25 +1,31 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 
-const userData = [
+const user_data = [
   {
     username: 'wes-test',
-    password: bcrypt.hashSync('password11', 10)
+    password: 'password11',
   },
   {
     username: 'zach-test',
-    password: bcrypt.hashSync('password22', 10)
+    password: 'password22',
   },
   {
     username: 'rob-test',
-    password: bcrypt.hashSync('password33', 10)
+    password: 'password33',
   },
   {
     username: 'john-test',
-    password: bcrypt.hashSync('password44', 10)
+    password: 'password44',
   }
 ];
 
-const seedUser = () => User.bulkCreate(userData);
+const seedUser = async () => {
+  try {
+    await User.bulkCreate(user_data);
+  } catch (error) {
+    console.error('Error seeding users:', error);
+  }
+};
 
 module.exports = seedUser;

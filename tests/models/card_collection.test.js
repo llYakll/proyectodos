@@ -10,19 +10,19 @@ jest.mock('../../models/card_collection', () => ({
 describe('Card_Collection model', () => {
   it('should create a card_collection entry linking a card to a collection', async () => {
     // Test card_collection data
-    const cardCollectionData = {
-      cardID: 1,
-      collectionID: 1,
+    const card_collection_data = {
+      card_id: 1,
+      collection_id: 1,
     };
 
     // Mock the behavior of the create method
-    Card_Collection.create.mockResolvedValue(cardCollectionData);
+    Card_Collection.create.mockResolvedValue(card_collection_data);
 
     // Create the card_collection entry
-    const result = await Card_Collection.create(cardCollectionData);
+    const result = await Card_Collection.create(card_collection_data);
 
     expect(result).toBeDefined();
-    expect(result.cardID).toBe(cardCollectionData.cardID);
-    expect(result.collectionID).toBe(cardCollectionData.collectionID);
+    expect(result.card_id).toBe(card_collection_data.card_id);
+    expect(result.collection_id).toBe(card_collection_data.collection_id);
   });
 });
