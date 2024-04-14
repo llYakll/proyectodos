@@ -1,9 +1,16 @@
-/*
-collection.js routes for user saved objects
-this file needs to get the associated objects in the users collection
-this file needs to allow the user to delete objec ts from their collection.
-this file needs to allow the user to save objects to their collection.
 
-this file is to allow the user to save all cards they have to a collection and get an aggregate price for their entire collection
 
-*/
+const  saveToCollection  = require('../utils/tcg-helper');
+
+router.post('/save', async (req, res) => {
+    try {
+        const { userID, cardID, quantity, avgPrice } = req.body;
+        if (!userID || !cardID || !quantity || !avgPrice) {
+            return res.status(400).send('Missing required parameters.');
+        }
+        const result = await saveToCollection(userID, { cardID, quantity, avgPrice });
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});

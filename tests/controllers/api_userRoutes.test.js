@@ -6,12 +6,7 @@ const bcrypt = require('bcrypt');
 describe('User routes', () => {
   describe('POST /api/users/login', () => {
     it('should log in a user with valid credentials', async () => {
-      // Create a user in the database
-      const currentDate = new Date();
-      const hashedPassword = await bcrypt.hash('password1234', 10);
-      const user = await User.create({
-        username: 'test1user',
-        password: hashedPassword
+     
       });
 
       // Send a login request with valid credentials
