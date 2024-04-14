@@ -3,20 +3,20 @@ const bcrypt = require('bcrypt');
 
 const user_data = [
   {
-    username: 'wes-test',
-    password: 'password11',
+    username: 'westest',
+    password: bcrypt.hashSync('password11', 10)
   },
   {
-    username: 'zach-test',
-    password: 'password22',
+    username: 'zachtest',
+    password: bcrypt.hashSync('password22', 10)
   },
   {
-    username: 'rob-test',
-    password: 'password33',
+    username: 'robtest',
+    password: bcrypt.hashSync('password33', 10)
   },
   {
-    username: 'john-test',
-    password: 'password44',
+    username: 'johntest',
+    password: bcrypt.hashSync('password44', 10)
   }
 ];
 
