@@ -48,7 +48,6 @@ router.post('/login', async (req, res) => {
 		});
 	
 		if (!dbUserData) {
-			// return res.status(400).json({ message: 'User not found. Please check your username and try again.' });
 			return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
 		}
 
@@ -60,7 +59,6 @@ router.post('/login', async (req, res) => {
 		console.log('this is the validPassword:', validPassword);
 	
 		if (!validPassword) {
-			// return res.status(400).json({ message: 'Incorrect password. Please try again.' });
 			return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
 		}
 
