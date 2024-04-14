@@ -10,7 +10,7 @@ class User extends Model {
 
 User.init(
     {
-        userID: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -30,9 +30,13 @@ User.init(
     },
     {
         hooks: {
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
+            async beforeCreate(new_user_data) {
+                try {
+                    new_user_data.password = await bcrypt.hash(new_user_data.password, 10);
+                    return new_user_data;
+                } catch (err) {
+                    throw new Error(err);
+                }
             }
         },
         sequelize,

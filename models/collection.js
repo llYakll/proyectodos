@@ -5,7 +5,7 @@ class Collection extends Model {}
 
 Collection.init(
     {
-        collectionID: {
+        collection_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -15,23 +15,23 @@ Collection.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        avgPrice: {
+        avg_price: {
             type: DataTypes.DECIMAL(10, 2)
         },
-        cardID: {
+        card_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'card',
-                key: 'cardID'
+                key: 'card_id'
             }
         },
-        userID: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'userID'
+                key: 'user_id'
             }
         }
     },
@@ -42,6 +42,6 @@ Collection.init(
         underscored: true,
         modelName: 'collection'
     }
-)
+);
 
 module.exports = Collection;

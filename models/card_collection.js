@@ -5,20 +5,20 @@ class Card_Collection extends Model {}
 
 Card_Collection.init(
     {
-        cardID: {
+        card_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'card',
-                key: 'cardID'
+                key: 'card_id'
             }
         },
-        collectionID: {
+        collection_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'collection',
-                key: 'collectionID'
+                key: 'collection_id'
             }
         }
     },
