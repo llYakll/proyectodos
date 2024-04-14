@@ -1,0 +1,56 @@
+@import 'bulma/css/bulma.css';
+
+:root {
+    --darkGreen: #26580F;
+    --green: #378805;
+    --lightGreen: #86DC3D;
+    --offGreen: #C5E90B;
+    --normal: #AAAA99;
+    --fire: #FF4422;
+    --water: #3399FF;
+    --electric: #FFCC33;
+    --grass: #77CC55;
+    --ice: #65CCFF;
+    --fighting: #BB5544;
+    --poison: #AA5599;
+    --ground: #DCBB55;
+    --flying: #8899FF;
+    --psychic: #FF5699;
+    --bug: #AABB23;
+    --rock: #BBAA66;
+    --ghost: #6666BB;
+    --dragon: #7766EE;
+    --dark: #775544;
+    --steel: #AAAABB;
+    --fairy: #EE99EE;
+    --type-shadow: -1px 2px 7px #000000;
+
+    --gradient-in: rgb(44, 44, 44);
+    --gradient-out: rgb(11, 11, 11);
+    --header-clone: rgb(10, 10, 10);
+    --table-bg: rgb(22, 22, 22);
+    --table-bg-mobile: rgb(11, 11, 11);
+
+
+    --bulma-danger: rgba(223, 84, 106);
+    --bulma-warning: rgba(250, 225, 149);
+    --bulma-success: rgba(110, 196, 146);
+    --bulma-info: rgba(84, 140, 203);
+    --bulma-link: rgba(77, 94, 192);
+    --bulma-primary: rgba(95, 206, 179);
+    --bulma-dark: rgb(54, 54, 54);
+    --bulma-light: rgba(245, 245, 245);
+    --bulma-light50: rgba(245, 245, 245, 0.5);
+}
+
+.is-text-pink {
+    color: var(--bulma-danger);
+}
+
+.is-bg-black {
+    background-color: black;
+}
+
+.is-image-rounded {
+    border-radius: 0.75rem;
+}
