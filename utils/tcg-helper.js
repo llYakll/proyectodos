@@ -34,6 +34,7 @@ async function fetchPokemonData(pokeInput) {
         const pokeData = await response.json();
             return pokeData;
     } catch (error) {
+        console.error(error)
         throw new Error('failed to fetch pokemonData')
     }
 };
