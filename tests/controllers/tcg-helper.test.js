@@ -41,14 +41,3 @@ describe('fetchPokemonData', () => {
     }, 10000);
 });
 
-//---------------------user selection?-----------
-
-
-//--------------------------------------------------------
-describe('saveToCollection', () => {
-    it('saves the users selected pokemon to the database', async () => {
-      
-
-    })
-})
-
