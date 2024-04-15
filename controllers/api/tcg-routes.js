@@ -5,7 +5,7 @@ const pokeInput = 'pikachu';//document.getElementById('pokeInput');
 //am i doing too much? do i need seperate routes for each function?
 router.get('/fetch-pokemon', async (req, res) => {
     try {
-        const { pokeInput } = req.body;
+        const { pokeInput } = req.query;
         if (!pokeInput) {
             return res.status(400).json({ message: 'No Pokemon name provided.' });
         }
@@ -33,3 +33,5 @@ router.get('/fetch-pokemon', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 }); 
+
+module.exports = TCGRouter;

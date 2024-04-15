@@ -5,22 +5,22 @@ const User = require('./user');
 
 // one to one
 User.hasOne(Collection, {
-    foreignKey: 'userID'
+    foreignKey: 'user_id'
 });
 
 Collection.belongsTo(User, {
-    foreignKey: 'userID'
+    foreignKey: 'user_id'
 });
 
 // many to many
 Card.belongsToMany(Collection, {
     through: Card_Collection,
-    foreignKey: 'cardID'
+    foreignKey: 'card_id'
 });
 
 Collection.belongsToMany(Card, {
     through: Card_Collection,
-    foreignKey: 'collectionID'
+    foreignKey: 'collection_id'
 });
 
 module.exports = { Card, Card_Collection, Collection, User };

@@ -38,12 +38,7 @@ async function fetchPokemonData(pokeInput) {
     }
 };
 
-// async function saveToCollection(userID, userSelection) {
-//     try {
-//         const connection = await 
-//     }
-// };
-
+//
 
 
 module.exports = {

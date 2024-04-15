@@ -1,41 +1,66 @@
-{{!-- need to verify user credentials --}}
-{{!-- need to route login to user collection --}}
-<body>
-    
-    <div>{{> spacer}}</div>
-
-    {{!-- username form --}}
-    <div class="container">
-        <div class="field">
-            <p class="control has-icons-left has-icons-right">
-            <input class="input is-large" type="email" placeholder="User Name">
-            <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-            </p>
+<div class="columns">
+    <div class="column is-2"></div>
+    <div class="column is-one-third mt-3">
+        <div class="card is-bg-black">
+            <div class="card-content">
+                <div class="title is-3">
+                    <p class="has-text-centered is-text-pink">Sign up</p>
+                </div>
+            </div>
+            <div class="card-image">
+                <figure class="image is-2by3 ">
+                    <img src="./images/blastoise2x3.jpg" />
+                    <form action="/api/users/" method="POST">
+                        <div class="field px-2 pt-3">
+                            <p class="control">
+                                <input class="input is-rounded" type="text" name="username" placeholder="Username" />
+                            </p>
+                        </div>
+                        <div class="field px-2">
+                            <p class="control">
+                                <input class="input is-rounded" type="text" name="password" placeholder="Password" />
+                            </p>
+                        </div>
+                        <div class="field px-2">
+                            <p class="control">
+                                <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Register</button>
+                            </p>
+                        </div>
+                    </form>
+                </figure>
+            </div>
         </div>
-        
-        {{!-- password form --}}
-        <div class="field">
-            <p class="control has-icons-left">
-            <input class="input is-large" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-            </span>
-            </p>
-        </div>
-    
-    {{!-- need logic to verify user credentials and load their collection --}}
-        <a class="field"  href="collection.html">
-            <p class="control">
-            <button class="button is-success">
-                Login
-            </button>
-            </p>
-        </a>
     </div>
-
-</body>
+    <div class="column is-one-third mt-3">
+        <div class="card is-bg-black">
+            <div class="card-content">
+                <div class="title is-3">
+                    <p class="has-text-centered is-text-pink">Login</p>
+                </div>
+            </div>
+            <div class="card-image">
+                <figure class="image is-2by3 ">
+                    <img src="./images/charizard2x3.png" />
+                    <form action="/api/users/login" method="POST">
+                        <div class="field px-2 pt-3">
+                            <p class="control">
+                                <input class="input is-rounded" type="text" name="username" placeholder="Username" />
+                            </p>
+                        </div>
+                        <div class="field px-2">
+                            <p class="control">
+                                <input class="input is-rounded" type="text" name="password" placeholder="Password" />
+                            </p>
+                        </div>
+                        <div class="field px-2">
+                            <p class="control">
+                                <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Login</button>
+                            </p>
+                        </div>
+                    </form>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="column is-2"></div>
+</div>

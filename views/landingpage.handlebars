@@ -1,35 +1,69 @@
-{{!-- need to specify routes --}}
-<body>
-    <div class="is-flex">
-            {{!-- login route --}}
-            <a href="login.html">
-                <button>
-                    <div class="bulma-overlay-mixin-parent">
-                        <div class="bulma-overlay-mixin">Login</div>
-                      </div>
-                <img src="../public/images/water.jpeg" />
-                </button>
-            </a>
-
-            {{!-- collection route --}}
-            <a href="collection.html">
-                <button>
-                    <div class="bulma-overlay-mixin-parent">
-                        <div class="bulma-overlay-mixin2">Collection</div>
-                      </div>
-                <img src="./test-images/grass.jpeg" />
-                </button>
-            </a>
- 
-            {{!-- search route --}}
-            <div href="">
-                <button>
-                    <div class="bulma-overlay-mixin-parent">
-                        <div class="bulma-overlay-mixin3">Search</div>
-                      </div>
-                <img src="../public/images/fire.jpeg" />
-                </button>
+<div class="columns">
+    <div class="column mt-3">
+        <a href="/search">
+            <div class="card is-bg-black">
+                <div class="card-content">
+                    <div class="title is-3">
+                        <p class="has-text-centered is-text-pink">Search</p>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-2by3 ">
+                        <img src="./images/grass2x3.jpeg" alt="Starter grass type pokemon" />
+                    </figure>
+                </div>
             </div>
-
+        </a>
     </div>
-</body>
+    <div class="column mt-3">
+        <a href="/collection">
+            <div class="card is-bg-black">
+                <div class="card-content">
+                    <div class="title is-3">
+                        <p class="has-text-centered is-text-pink">Collection</p>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <figure class="image is-2by3 ">
+                        <img src="./images/water2x3.jpeg" alt="Starter water type pokemon" />
+                    </figure>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{#if loggedIn}}
+        <div class="column mt-3">
+            <a href="/logout">
+                <div class="card is-bg-black">
+                    <div class="card-content">
+                        <div class="title is-3">
+                            <p class="has-text-centered is-text-pink">Logout</p>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <figure class="image is-2by3 ">
+                            <img src="./images/fire2x3.jpeg" alt="Starter fire type pokemon" />
+                        </figure>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{else}}
+        <div class="column mt-3">
+            <a href="/login">
+                <div class="card is-bg-black">
+                    <div class="card-content">
+                        <div class="title is-3">
+                            <p class="has-text-centered is-text-pink">Login</p>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <figure class="image is-2by3 ">
+                            <img src="./images/fire2x3.jpeg" alt="Starter fire type pokemon" />
+                        </figure>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{/if}}
+</div>

@@ -11,24 +11,24 @@ jest.mock('../../models/collection', () => ({
 describe('Collection model', () => {
   it('should create a collection with average sell price and total value', async () => {
 
-    const collectionData = {
+    const collection_data = {
       quantity: 1,
-      avgPrice: 10.0,
-      cardID: 1,
-      userID: 1,
+      avg_price: 10.0,
+      card_id: 1,
+      user_id: 1,
     };
 
     // Mock finding user's collection
     Collection.findOne.mockResolvedValue(null);
 
     // Mock saving collection
-    Collection.create.mockResolvedValue(collectionData);
+    Collection.create.mockResolvedValue(collection_data);
 
     // Call the function to create the collection
-    const result = await Collection.create(collectionData);
+    const result = await Collection.create(collection_data);
 
     expect(result).toBeDefined();
-    expect(result.quantity).toBe(collectionData.quantity);
-    expect(result.avgPrice).toBe(collectionData.avgPrice);
+    expect(result.quantity).toBe(collection_data.quantity);
+    expect(result.avg_price).toBe(collection_data.avg_price);
   });
 });

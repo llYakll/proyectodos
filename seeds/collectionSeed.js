@@ -1,56 +1,74 @@
 const Collection = require('../models/collection');
 
-const collectionData = [
+const collection_data = [
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 1,
-    userID: 1,
+    avg_price: 12.56,
+    card_id: 1,
+    user_id: 1,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 2,
-    userID: 1,
+    avg_price: 19.30,
+    card_id: 2,
+    user_id: 1,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 3,
-    userID: 2,
+    avg_price: 13.62,
+    card_id: 3,
+    user_id: 1,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 1,
-    userID: 2,
+    avg_price: 4.15,
+    card_id: 4,
+    user_id: 1,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 2,
-    userID: 3,
+    avg_price: 4.15,
+    card_id: 4,
+    user_id: 2,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 3,
-    userID: 3,
+    avg_price: 13.62,
+    card_id: 3,
+    user_id: 2,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 1,
-    userID: 4,
+    avg_price: 19.30,
+    card_id: 2,
+    user_id: 2,
   },
   {
     quantity: 1,
-    avgPrice: 100.00,
-    cardID: 2,
-    userID: 4,
+    avg_price: 12.56,
+    card_id: 1,
+    user_id: 3,
+  },
+  {
+    quantity: 1,
+    avg_price: 13.62,
+    card_id: 3,
+    user_id: 3,
+  },
+  {
+    quantity: 1,
+    avg_price: 4.15,
+    card_id: 4,
+    user_id: 4,
   },
 ];
 
-const seedCollection = () => Collection.bulkCreate(collectionData);
+const seedCollection = async () => {
+  try {
+      await Collection.bulkCreate(collection_data);
+  } catch (error) {
+      console.error('Error seeding collections:', error);
+  }
+};
 
 module.exports = seedCollection;

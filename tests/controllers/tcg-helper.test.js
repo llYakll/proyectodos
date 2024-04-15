@@ -47,8 +47,7 @@ describe('fetchPokemonData', () => {
 //--------------------------------------------------------
 describe('saveToCollection', () => {
     it('saves the users selected pokemon to the database', async () => {
-        userSelection = 'something'
-        userID = 'someone'
+      
 
     })
 })
