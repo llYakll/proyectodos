@@ -21,8 +21,8 @@ router.post('/', async (req, res) => {
 		});
 
 		req.session.save(() => {
-			req.session.loggedIn = true;
-			req.session.userId = dbUserData.user_id;
+			req.session.logged_in = true;
+			req.session.user_id = dbUserData.user_id;
 
 			res.status(200).json(dbUserData);
 		});
@@ -51,8 +51,8 @@ router.post('/login', async (req, res) => {
 			return res.status(400).json({ message: 'Incorrect username or password. Please try again!' });
 		}
 
-		console.log('this is the req.body.password:', req.body.password);
-		console.log('this is the dbUserData.password:', dbUserData.password);
+		// console.log('this is the req.body.password:', req.body.password);
+		// console.log('this is the dbUserData.password:', dbUserData.password);
 
 		const validPassword = await bcrypt.compare(req.body.password, dbUserData.password);
 
@@ -63,9 +63,10 @@ router.post('/login', async (req, res) => {
 		}
 
 		req.session.save(() => {
-			req.session.loggedIn = true;
-			req.session.userId = dbUserData.user_id;
+			req.session.logged_in = true;
+			req.session.user_id = dbUserData.user_id;
 	
+			console.log('You are successfully logged in!');
 			res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
 		});
 	} catch (err) {
@@ -76,7 +77,7 @@ router.post('/login', async (req, res) => {
 
 // Route for logging out
 router.post('/logout', (req, res) => {
-	if (req.session.loggedIn) {
+	if (req.session.logged_in) {
 			req.session.destroy(() => {
 			res.status(204).end();
 		});

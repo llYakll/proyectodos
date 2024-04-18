@@ -8,17 +8,18 @@
                 </div>
             </div>
             <div class="card-image">
-                <figure class="image is-2by3 ">
+                <figure class="image is-2by3">
                     <img src="./images/blastoise2x3.jpg" />
-                    <form action="/api/users/" method="POST">
+                    {{!-- <form action="/api/users/" method="POST" class="signup-form"> --}}
+                    <form class="signup-form">
                         <div class="field px-2 pt-3">
                             <p class="control">
-                                <input class="input is-rounded" type="text" name="username" placeholder="Username" />
+                                <input id="username-signup" class="input is-rounded" type="text" name="username" placeholder="Username" />
                             </p>
                         </div>
                         <div class="field px-2">
                             <p class="control">
-                                <input class="input is-rounded" type="text" name="password" placeholder="Password" />
+                                <input id="password-signup" class="input is-rounded" type="text" name="password" placeholder="Password" />
                             </p>
                         </div>
                         <div class="field px-2">
@@ -41,15 +42,16 @@
             <div class="card-image">
                 <figure class="image is-2by3 ">
                     <img src="./images/charizard2x3.png" />
-                    <form action="/api/users/login" method="POST">
+                    {{!-- <form action="/api/users/login" method="POST" class="login-form"> --}}
+                    <form class="login-form">
                         <div class="field px-2 pt-3">
                             <p class="control">
-                                <input class="input is-rounded" type="text" name="username" placeholder="Username" />
+                                <input id="username-login" class="input is-rounded" type="text" name="username" placeholder="Username" />
                             </p>
                         </div>
                         <div class="field px-2">
                             <p class="control">
-                                <input class="input is-rounded" type="text" name="password" placeholder="Password" />
+                                <input id="password-login" class="input is-rounded" type="text" name="password" placeholder="Password" />
                             </p>
                         </div>
                         <div class="field px-2">
@@ -64,3 +66,5 @@
     </div>
     <div class="column is-2"></div>
 </div>
+
+<script src="/js/login.js"></script>

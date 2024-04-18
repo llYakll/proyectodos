@@ -31,7 +31,7 @@ const subtypes = [
 
 router.get('/', async (req, res) => {
     try {
-        res.render('search', { subtypes: subtypes});
+        res.render('search', { subtypes: subtypes, logged_in: req.session.logged_in});
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
         const cards = response.data.data;
 
         // Render search results page with the retrieved card data and subtypes
-        res.render('search', { cards: cards, subtypes: subtypes });
+        res.render('search', { cards: cards, subtypes: subtypes, logged_in: req.session.logged_in });
     } catch (error) {
         console.error('Error searching cards:', error);
         res.status(500).json({ error: 'An error occurred while searching for cards.' });
