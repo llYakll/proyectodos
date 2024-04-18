@@ -8,31 +8,28 @@
     <title>MyPokeDB</title>
 </head>
 <body>
-    {{!-- header --}}
     <header class="hero has-background-black">
         <div class="hero-body">
             <nav class="container columns level">
                 <div class="navbar-item is-active column is-flex is-justify-content-center">
                     <div class="field has-addons is-marginless is-hidden-mobile">
                         <a class="control" role="navigation"  href="/search">
-                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Search</span></button>
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Search</button>
                         </a>
                         <a class="control" role="navigation"  href="/collection">
-                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Collection</span></button>        
+                            <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Collection</button>
                         </a>
-                        {{!-- if logged in - log out else log in --}}
                         {{#if logged_in}}
-                            <a class="control" role="navigation"  href="/login">
-                                <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Login</span></button>        
+                            <a class="control" role="navigation"  href="/">
+                                <button id="logout-nav" class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Logout</button>
                             </a>
                         {{else}}
                             <a class="control" role="navigation"  href="/login">
-                                <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold"><span>Login</span></button>        
+                                <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold">Login</button>
                             </a>
                         {{/if}}
                     </div>
                 </div>
-                <!-- Title -->
                 <div class="column is-4 center">
                     <a role="navigation" href="/">
                         <h1 class="title is-size-1 has-text-danger has-text-weight-bold">MyPokeDB</h1>
@@ -44,12 +41,13 @@
     <main>
         {{{body}}}
     </main>
-    {{!-- footer --}}
     <footer class="hero has-background-black desktop-footer mt-3">
         <div class="hero-body">    
         </div>
     </footer>
-    {{!-- js link --}}
     <script src="/js/scripts.js"></script>
+    {{#if logged_in}}
+        <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 </html>
