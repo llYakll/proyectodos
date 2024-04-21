@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Card } = require('../models');
 const axios = require('axios');
 
 const subtypes = [
@@ -78,6 +79,24 @@ router.post('/', async (req, res) => {
     } catch (error) {
         console.error('Error searching cards:', error);
         res.status(500).json({ error: 'An error occurred while searching for cards.' });
+    }
+});
+
+router.post('/collection', async (req, res) => {
+    try {
+        const { card_id, user_id } = req.body;
+
+        const card = await Card.findByPk(card_id);
+        if(!card) {
+            return res.status(404).json({ error: 'Card not found.' });
+        }
+
+        await card.saveToCollection(user_id);
+
+        res.status(200).json({ message: 'Card added to collection successfully.' });
+    } catch (error) {
+        console.error('Error adding card to collection:', error);
+        res.status(500).json({ error: 'An error occured while adding the card to the collection.'});
     }
 });
 

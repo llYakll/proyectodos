@@ -29,7 +29,15 @@ const sess = {
 app.use(session(sess));
 
 // const hbs = exphbs.create({ helpers });
-const hbs = exphbs.create();
+const hbs = exphbs.create({
+  helpers: {
+    allowPropertyAccess(obj, propertyName) {
+      return obj && Object.prototype.hasOwnProperty.call(obj, propertyName)
+        ? obj[propertyName]
+        : undefined;
+    }
+  }
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

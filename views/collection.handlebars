@@ -1,16 +1,64 @@
-<body>
-    {{!-- Header --}}
-    <div class="level">
-        <h1 class="is-size-1 is-uppercase level-left">Collection</h1>
-    </div>
+<!-- Collection Information -->
+<div class="collection-info">
+    <h1>My Collection</h1>
+    <p>Total Cards: {{ totalQuantity }}</p>
+    <p>Total Average Price: ${{ totalAveragePrice }}</p>
+</div>
 
-    {{!-- Search - can be a partial but unsure which is better (searchfield.handlebars) --}}
-    {{!-- Search needs to search the collections database not the API --}}
-    <div>{{> searchfield}}</div>
+<!-- Add New Card to Collection Form -->
+<form action="/collection/add" method="POST">
+    <label for="cardId">Card ID:</label>
+    <input type="text" id="cardId" name="card_id" placeholder="Enter Card ID">
+    <label for="quantity">Quantity:</label>
+    <input type="text" id="quantity" name="quantity" placeholder="Enter Quantity">
+    <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold" type="submit">Add to Collection</button>
+</form>
 
-    <div>{{> spacer}}</div>
+<!-- Update Card Quantity Form -->
+<form action="/collection/update" method="POST">
+    <label for="cardIdToUpdate">Card ID to Update:</label>
+    <input type="text" id="cardIdToUpdate" name="card_id" placeholder="Enter Card ID">
+    <label for="userIdToUpdate">User ID:</label>
+    <input type="text" id="userIdToUpdate" name="user_id" placeholder="Enter User ID">
+    <label for="quantityToUpdate">New Quantity:</label>
+    <input type="text" id="quantityToUpdate" name="quantity" placeholder="Enter New Quantity">
+    <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold" type="submit">Update Quantity</button>
+</form>
 
-    {{!-- Card container --}}
-    <div id="pokecard-container" class="columns is-multiline">{{> pokecard}}</div>
-    
-</body>
+<!-- Delete Card from Collection Form -->
+<form action="/collection/delete" method="POST">
+    <label for="cardIdToDelete">Card ID to Delete:</label>
+    <input type="text" id="cardIdToDelete" name="card_id" placeholder="Enter Card ID">
+    <label for="userIdToDelete">User ID:</label>
+    <input type="text" id="userIdToDelete" name="user_id" placeholder="Enter User ID">
+    <button class="button is-rounded has-background-light has-text-danger has-text-weight-bold" type="submit">Delete from Collection</button>
+</form>
+
+<!-- Search Results -->
+<div class="grid is-col-min-12">
+    {{#if userCollection}}
+        {{#each userCollection}}
+            <div class="cell">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{allowPropertyAccess this 'img_url'}}" alt="{{allowPropertyAccess this 'card_name'}}">
+                        </div>
+                        <div class="card-content">
+                            <p>{{allowPropertyAccess this 'card_name'}}</p>
+                            <p>Subtypes:</p>
+                            <ul>
+                                {{#each (allowPropertyAccess this 'card_subtypes')}}
+                                    <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            <p>Quantity: {{quantity}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>No cards found in collection.</p>
+    {{/if}}
+</div>
