@@ -4,9 +4,10 @@ const sequelize = require('../config/connection')
 
 
 //function to verify user input is legitimate
-function isValidPokemon(pokeInput) { 
+function isValidPokemon() { 
+    const pokeInput = req.query.name;
     if (!pokeInput) {
-        throw new Error('Please provide a valid Pokemon name.');
+        throw new Error('Please provide a pokemon name');
     }
     
     const allowLetters = /^[a-zA-Z]+$/; // Match only letters from start to end
@@ -24,7 +25,7 @@ function constructUrl(pokeInput) {
     return `${baseUrl}${pokeInput}*`;
 }
 //fetches the pokemon data
-async function fetchPokemonData(pokeInput) {
+async function fetchPokemonData() {
     try {
         const url = constructUrl(pokeInput);
         const response = await fetch(url);

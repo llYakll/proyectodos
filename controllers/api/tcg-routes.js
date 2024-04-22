@@ -1,7 +1,7 @@
 const express = require('express');
 const TCGRoutes = express.Router();
 const { isValidPokemon, constructUrl, fetchPokemonData, } = require('../../utils/tcg-helper');
-const pokeInput = 'pikachu';//document.getElementById('pokeInput'); or req.query?
+const pokeInput = req.query
 
 TCGRoutes.get('/search', isValidPokemon, constructUrl, fetchPokemonData, (req, res) => {
     res.json({

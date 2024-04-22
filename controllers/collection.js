@@ -1,19 +1,19 @@
 const express = require('express');
-const router = express.Router();
+const collectionRoutes = express.Router();
 const createCollection = require('../utils/collections'); 
 
 
-router.post('/collections', async (req, res) => {
+collectionRoutes.post('/collections', async (req, res) => {
     try {
         const collection = await createCollection(req.body); 
         res.status(201).json(collection);
     } catch (error) {
         console.error('Error creating collection:', error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'error fetching collection' });
     }
 });
 
-router.get('/user-collection', (req, res) => {
+collectionRoutes.get('/collections', (req, res) => {
     res.json({ userCollection: req.userCollection });
 });
 
