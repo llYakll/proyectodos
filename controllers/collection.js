@@ -1,9 +1,22 @@
-/*
-collection.js routes for user saved objects
-this file needs to get the associated objects in the users collection
-this file needs to allow the user to delete objec ts from their collection.
-this file needs to allow the user to save objects to their collection.
+const express = require('express');
+const collectionRoutes = express.Router();
+const createCollection = require('../utils/collections'); 
 
-this file is to allow the user to save all cards they have to a collection and get an aggregate price for their entire collection
 
-*/
+collectionRoutes.post('/collections', async (req, res) => {
+    try {
+        const collection = await createCollection(req.body); 
+        res.status(201).json(collection);
+    } catch (error) {
+        console.error('Error creating collection:', error);
+        res.status(500).json({ message: 'error fetching collection' });
+    }
+});
+
+collectionRoutes.get('/collections', (req, res) => {
+    res.json({ userCollection: req.userCollection });
+});
+
+
+
+module.exports = collectionRoutes;
